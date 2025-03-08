@@ -1,28 +1,25 @@
-// Напишите функцию tripledouble(num1, num2), которая принимает числа num1 и num2.
-// Функция должна возвращать 1, если в числе num1 есть три одинаковые цифры подряд,
-// а в числе num2 есть две одинаковые цифры подряд.
-// В противном случае функция должна вернуть 0.
+// Напишите функцию getVowelsCount(str), принимающую строку в качестве аргумента
+// и возвращающую количество гласных, которые содержатся в этой строке.
+// Гласными являются А, Е, Ё, О, У, Ы, Э, И, Ю, Я.
+// Функция должна подсчитывать гласные любого регистра, то-есть работать независимо от регистра.
 
-function task3(num1, num2) {
-    num1 = String(num1).split("");
-    let checkOne = 0;
-    let checkTwo = 0;
-    for (let a = 0; a < num1.length; a++) {
-        if (num1[a] === num1[a + 1] || num1[a] === num1[a - 1]) {
-            checkOne++;
+function getVowelsCount(str) {
+    let counter = 0
+    function check(symbol) {
+        let array = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
+        for (let a = 0; a < array.length; a++) {
+            if (symbol === array[a]) {
+                return 1;
+            }
         }
-    }
-    num2 = String(num2).split("")
-    for (let b = 0; b < num2.length; b++) {
-        if (num2[b] === num2[b + 1] || (num2[b] === num2[b - 1])) {
-            checkTwo++;
-        }
-    }
-    if (checkOne >= 3 && checkTwo >= 2) {
-        return 1;
-    } else {
         return 0;
     }
+    for (let b = 0; b < str.length; b++) {
+        if (check(str[b]) === 1) {
+            counter++;
+        }
+    }
+    return counter;
 }
 
-console.log(task3(122234, 12234));
+getVowelsCount("еуе");
