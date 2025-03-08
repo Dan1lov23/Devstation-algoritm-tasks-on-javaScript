@@ -1,18 +1,27 @@
-// Уродливыми называются числа, делителями которых могут быть только простые числа 2, 3 и 5.
-// Нужно написать функцию isUgly(num), которая проверит, является ли число уродливым.
+// Двумерный массив - массив, элементами которого являются другие массивы.
+// Он формирует таблицу с рядами и столбцами, где каждый элемент имеет два индекса: для строки и столбца.
+// Напишите функцию checkSquare(square), которая принимает двумерный массив
+// и проверяет уникальность каждого элемента массива - числа.
+// Функция возвращает true, если каждое число является уникальным, и false - в противном случае.
 
-function task6(num) {
-    if (num <= 0) return false;
-    while (num % 2 === 0) {
-        num /= 2;
+function checkSquare(square) {
+    let resultArray = [];
+    for (let a = 0; a < square.length; a++) {
+        for (let b = 0; b < square[a].length; b++) {
+            resultArray.push(square[a][b]);
+        }
     }
-    while (num % 3 === 0) {
-        num /= 3;
+    for (let c = 0; c < resultArray.length; c++) {
+        let count = resultArray.filter(element => element === resultArray[c]).length;
+        if (count > 1) {
+            return false;
+        }
     }
-    while (num % 5 === 0) {
-        num /= 5;
-    }
-    return num === 1;
+    return true;
 }
 
-console.log(tas6(5));
+checkSquare([
+    [1, 2, 3],
+    [1, 2, 3],
+    [1, 2, 3]
+]);
