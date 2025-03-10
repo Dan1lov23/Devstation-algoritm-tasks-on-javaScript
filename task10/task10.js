@@ -1,26 +1,26 @@
-// Двумерный массив - массив, элементами которого являются другие массивы.
-// Он формирует таблицу с рядами и столбцами, где каждый элемент имеет два индекса: для строки и столбца.
-// Напишите функцию checkSquare(square), которая принимает двумерный массив
-// и проверяет уникальность каждого элемента массива - числа.
-// Функция возвращает true, если каждое число является уникальным, и false - в противном случае.
+// Расстояние Хэмминга — число позиций, в которых соответствующие символы двух слов
+// одинаковой длины различны.
+// Напишите функцию hammingDistance(str1, str2), принимающую на вход две строки одинаковой длины.
+// Функция должна возвращать число - расстояние Хэмминга.
+// Если строки имеют разную длину, то функция должна возвращать: "Строки должны быть одинаковой длины".
 
-function task10(square) {
-    const seen = new Set();
-
-    for (let i = 0; i < square.length; i++) {
-        for (let j = 0; j < square[i].length; j++) {
-            const num = square[i][j];
-            if (seen.has(num)) {
-                return false;
-            }
-            seen.add(num);
-        }
+function hammingDistance(str1, str2) {
+    let indexOne = 0;
+    let indexTwo = 0;
+    let counter = 0;
+    let winCounter = 0;
+    if (str1.length !== str2.length) {
+        return "Строки должны быть одинаковой длины"
     }
-    return true;
+    while (counter !== str1.length) {
+        if (str1[indexOne] !== str2[indexTwo]) {
+            winCounter++;
+        }
+        indexOne++;
+        indexTwo++;
+        counter++;
+    }
+    return winCounter;
 }
 
-console.log(task10([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]));
+hammingDistance('Hello', 'Hallo');
