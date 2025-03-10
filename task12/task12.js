@@ -1,23 +1,32 @@
-// Числа Фибоначчи — это последовательность чисел,
-// в которой каждое следующее число равно сумме двух предыдущих.
-// Первые два числа заданы сразу и равны 0 и 1.
-// Напишите функцию fibonacci(n), которая возвращает n-е число Фибоначчи.
-// Например, для n = 6 функция должна вернуть 8,
-// поскольку она является шестой в цепочке - 0, 1, 1, 2, 3, 5, 8.
+// Напишите функцию frequentSymbol(text), принимающую на вход текст,
+// в котором нужно найти самый часто используемый символ и вывести его.
+// Если же в тексте одинаковое количество символов встречается одинаковое количество раз,
+// то функция будет выводить тот символ, который находится первым в тексте.
+// Строчная и прописная буква - это разные символы.
 
-function task13(n) {
-    let a = 0;
-    let b = 1;
-    console.log(a);
-    console.log(b);
-    let counter = 0;
-    while (counter !== n - 1) {
-        let c = a + b;
-        console.log(c);
-        a = b;
-        b = c;
-        counter++;
+function frequentSymbol(text) {
+    const frequency = {};
+
+    for (let char of text) {
+        if (frequency[char]) {
+            frequency[char]++;
+        } else {
+            frequency[char] = 1;
+        }
     }
+
+    let maxCount = 0;
+    let resultSymbol = '';
+
+    for (let char in frequency) {
+        if (frequency[char] > maxCount) {
+            maxCount = frequency[char];
+            resultSymbol = char;
+        } else if (frequency[char] === maxCount && resultSymbol === '') {
+            resultSymbol = char;
+        }
+    }
+    return resultSymbol;
 }
 
-task13(6);
+frequentSymbol('tic tac');
