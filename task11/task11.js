@@ -1,15 +1,19 @@
-// Дано натуральное число number.
-// Нужно написать функцию sumDigits(number),
-// которая будет считывать все цифры числа number и возвращать их сумму.
-// Возвращаемое значение должно быть числом.
+// Напишите функцию calculateCoins(amount), принимающую на вход сумму денег amount.
+// Функция должна возвращать минимальное количество монет разных номиналов для набора определенной суммы денег.
+// Имеются монеты номиналом: 1, 2, 5, 10 рублей.
 
-function task11(number) {
-    let num = String(number);
-    let sum = 0;
-    for (let a = 0; a < num.length; a++) {
-        sum += Number(num[a]);
+function calculateCoins(amount) {
+    const coins = [10, 5, 2, 1];
+    const result = {};
+
+    for (let coin of coins) {
+        if (amount >= coin) {
+            const count = Math.floor(amount / coin);
+            result[coin] = count;
+            amount -= count * coin;
+        }
     }
-    return sum;
+    return result;
 }
 
-console.log(task11(1234567));
+calculateCoins(123);
