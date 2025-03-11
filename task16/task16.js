@@ -1,14 +1,17 @@
-// Факториал — это произведение всех натуральных чисел от 1 до некоторого числа n включительно.
-// Напишите функцию factorial(n), которая будет возвращать факториал от n.
-// Считайте, что факториал от нуля равен единице.
+// Нужно написать функцию removeEverySecondOne(arr), которая получает в качестве параметра массив и обрабатывает его, удаляя каждый второй элемент массива.
+//
+// Функция должна возвращать массив с удаленными элементами.
 
-function task16(n) {
-    let stringNum = String(n);
-    let result = 1;
-    for (let a = 0; a < stringNum.length; a++) {
-        result *= stringNum[a];
+function removeEverySecondOne(arr){
+    let check = 0;
+    let resultArray = [];
+    for (let a = 0; a < arr.length; a++) {
+        if (check % 2 === 0) {
+            resultArray.push(arr[a]);
+        }
+        check++;
     }
-    return result;
+    return resultArray
 }
 
-console.log(task16(165));
+removeEverySecondOne([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
