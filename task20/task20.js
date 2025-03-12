@@ -1,17 +1,16 @@
-// Есть массив из n элементов, содержащий неповторяющиеся числа из диапазона [0, n].
-// Нужно написать функцию missingNumber(nums), которая вернет единственное число в диапазоне,
-// отсутствующее в массиве.
+// Реализуйте функцию inAscOrder(arr), которая принимает массив целых чисел.
+// Нужно определить, расположены ли элементы массива в порядке возрастания.
+// Функция должна вернуть true, если элементы массива расположены в порядке возрастания,
+// в противном случае вернуть false.
+// Массивы, состоящие из 1 или 0 элементов, также должны возвращать true.
 
-function task20(array) {
-    let result = [];
-    array = array.sort((a, b) => a - b);
-    for (let a = 0; a < array.length; a++) {
-        result.push(array[a]);
-        if (array[a] + 1 !== array[a + 1] && array[a] < array.length - 1) {
-            result.push(array[a] + 1);
+function inAscOrder(arr) {
+    for (let a = 0; a < arr.length; a++) {
+        if (arr[a] > arr[a + 1]) {
+            return false;
         }
     }
-    return result;
+    return true;
 }
 
-console.log(task20([1, 3, 4]));
+inAscOrder([1, 2, 4, 7, 19]);
