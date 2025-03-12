@@ -1,20 +1,26 @@
-// Напишите функцию sortNumbersByDigitSum(numbers), которая будет принимать массив
-// целых чисел numbers и возвращать отсортированный массив чисел в порядке возрастания суммы их цифр.
-// Если сумма цифр у нескольких чисел одинакова, то такие числа должны быть отсортированы
-// в порядке возрастания самих чисел.
+// Реализуйте функцию moveZeros(arr), которая принимает массив и перемещает все нули в конец,
+// сохраняя порядок расположения остальных элементов.
+// Функция должна вернуть массив с нулями в конце.
 
-function task19(array) {
-    let sum = 0;
+function moveZeros(arr) {
+    let newArray = [];
+    let zeroArray = [];
     let resultArray = [];
-    for (let a = 0; a < array.length; a++) {
-       let stringNumber = String(array[a]);
-       sum = 0;
-       for (let b = 0; b < stringNumber.length; b++) {
-           sum += Number(stringNumber[b]);
-       }
-        resultArray.push(sum);
+    for (let a = 0; a < arr.length; a++) {
+        if (arr[a] !== 0) {
+            newArray.push(arr[a]);
+        } else {
+            zeroArray.push(arr[a]);
+        }
     }
-    return(resultArray.sort((a, b) => a - b));
+    for (let b = 0; b < newArray.length; b++) {
+        resultArray.push(newArray[b]);
+    }
+    for (let c = 0; c < zeroArray.length; c++) {
+        resultArray.push(zeroArray[c]);
+    }
+    return resultArray;
 }
 
-console.log(task19([13, 23, 45, 15, 68, 3]));
+moveZeros([false, 1, 0, 1, 2, 0, 1, 3, "a"])
+
