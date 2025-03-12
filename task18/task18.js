@@ -1,21 +1,23 @@
-// Транспонированная матрица — это матрица, полученная из исходной матрицы заменой строк на столбцы.
-// Напишите функцию transpose(matrix), которая принимает массив данных в виде матрицы
-// и возвращает её транспонированную версию.
+// Изограмма - это слово, в котором нет повторяющихся букв, неважно последовательных или непоследовательных.
+//
+// Реализуйте функцию isIsogram(str), которая определяет, является ли строка str, содержащая только буквы, изограммой.
+//
+// Функция должна вернуть true, если строка является изограммой, в противном случае функция должна вернуть false.
+//
+// Пусть пустая строка является изограммой. Алгоритм не должен обращать внимание на регистр букв.
 
-function task18(matrix) {
-    let mainMatrix = [];
-    for (let a = 0; a < matrix.length; a++) {
-        for (let b = 0; b < matrix[a].length; b++) {
-            mainMatrix.push(matrix[a][b]);
+function isIsogram(str) {
+    str = str.toLowerCase();
+    const charSet = new Set();
+
+    for (let char of str) {
+        if (charSet.has(char)) {
+            return false;
         }
+        charSet.add(char);
     }
-    for (let c = 0; c < mainMatrix.length; c++) {
-        if (c % 2 === 0) {
-            console.log(mainMatrix[c], mainMatrix[c + 1]);
-        }
-    }
+
+    return true;
 }
 
-task18([
-    [1, 2, 3], [4, 5, 6]
-]);
+isIsogram("moOse");
