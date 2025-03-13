@@ -1,20 +1,14 @@
-// Нужно написать функцию twoSum(numbers, target), которая принимает массив чисел и число target.
-// Функция должна найти в массиве два разных элемента, которые при сложении дают значение target.
-// Функция должна вернуть индексы найденных элементов в виде массива.
-// Примеры вызова функции:
+// Напишите функцию humanReadable(seconds), которая принимает неотрицательное целое число
+// (секунды) в качестве входных данных и возвращает время в читабельном формате HH:MM:SS.
 
-function task24(numbers, target) {
-    let resultArray = [];
-    let num = 0;
-    while (num <= target) {
-        for (let a = num + 1; a < numbers.length; a++) {
-            if (numbers[num] + numbers[a] === target) {
-                resultArray.push(num, a)
-                return resultArray;
-            }
-        }
-        num++;
+function humanReadable(seconds) {
+    if (seconds < 0) {
+        throw new Error('Seconds must be a non-negative integer.');
     }
+    const hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+    const remainingSeconds = String(seconds % 60).padStart(2, '0');
+    return `${hours}:${minutes}:${remainingSeconds}`;
 }
 
-console.log(task24([1, 2, 3], 4));
+humanReadable(59);
