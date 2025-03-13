@@ -1,45 +1,27 @@
-// Дружественные числа - это пары натуральных чисел, для которых сумма делителей одного
-// числа равна другому числу и наоборот.
-// Напишите функцию friendlyNumbers(start, end), которая принимает два числа.
-// Первое число start - начало диапазона, end - конец диапазона.
+// Напишите функцию tripledouble(num1, num2), которая принимает числа num1 и num2.
+// Функция должна возвращать 1, если в числе num1 есть три одинаковые цифры подряд,
+// а в числе num2 есть две одинаковые цифры подряд.
+// В противном случае функция должна вернуть 0.
 
-function task27(start, end) {
-    function check(number1, number2) {
-        number1 = String(number1);
-        number2 = String(number2);
-
-        let digitSumOne = 0 ;
-        let digitSumTwo = 0;
-        for (let a = 1; a < number1; a++) {
-            if (number1 % a === 0) {
-                digitSumOne += a;
-            }
-        }
-        for (let b = 0; b < number2; b++) {
-            if (number2 % b === 0) {
-                digitSumTwo += b;
-            }
-        }
-        if (digitSumOne === Number(number2) && digitSumTwo === Number(number1)) {
-            return 1;
-        }
-        return 0;
-    }
-    let num1 = start;
-    let num2 = start;
-    let resultArray = [];
-    while (num1 < end) {
-        num1++;
-        num2 = 0;
-        while (num2 < end) {
-            console.log(num1, num2);
-            if (check(num1, num2) === 1) {
-                resultArray.push(num1, num2);
-                return resultArray;
-            }
-            num2++;
+function tripledouble(num1, num2) {
+    let result1 = 0;
+    let result2 = 0;
+    let stringNum1 = String(num1);
+    let stringNum2 = String(num2);
+    for (let a = 0; a < stringNum1.length; a++) {
+        if (Number(stringNum1[a]) === Number(stringNum1[a + 1]) && Number(stringNum1[a]) ===  Number(stringNum1[a + 2])) {
+            result1 = 1;
         }
     }
+    for (let b = 0; b < stringNum2.length; b++) {
+        if (Number(stringNum2[b]) === Number(stringNum2[b + 1])) {
+            result2 = 1;
+        }
+    }
+    if (result1 === result2) {
+        return 1;
+    }
+    return 0;
 }
 
-console.log(task27(100, 300));
+tripledouble(10560002, 100);
