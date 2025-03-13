@@ -1,16 +1,19 @@
-// Напишите функцию decimalToBinary(digit), которая принимает на вход десятичное число digit
-// и возвращает его же в двоичном представлении.
-// Возвращаемое значение должно быть строкой.
-// Если на вход подается некорректное значение, функция должна вернуть пустую строку.
+// Реализуйте функцию divide(str), которая принимает строку и разделяет её на пары из двух символов.
+//
+// Если строка содержит нечетное количество символов, то к последней паре следует добавить символ _ для четности.
+//
+// Функция должна вернуть массив строк разделённых пар.
 
-function task27(digit) {
-    let result = "";
-    while (digit > 1) {
-        result += Math.trunc(digit % 2)
-        digit = digit / 2;
+function divide(str) {
+    let resultArray = [];
+    for (let a = 0; a < str.length; a += 2) {
+        if (str[a + 1] === undefined) {
+            resultArray.push(str[a] + "_");
+            break;
+        }
+        resultArray.push(str[a] + str[a + 1]);
     }
-    result = result.split("").reverse().join("");
-    return result;
+    return resultArray;
 }
 
-console.log(task27(1000));
+console.log(divide("abcdefg"));
