@@ -1,23 +1,19 @@
-// Задан массив, содержащий целые числа и имеющий длину не менее 3.
-// Массив либо полностью состоит из нечетных чисел, либо полностью состоит из четных чисел,
-// за исключением одного целого числа N.
-// Напишите функцию findOutlier(integers), который принимает массив в качестве аргумента и возвращает N.
+// Напишите функцию filterBySubstring(input, dictionary), которая принимает входную строку input
+// и массив dictionary и возвращает те значения из массива,
+// которые начинаются с входной строки,в виде массива строк.
+// Функция должна возвращать все результаты в порядке, указанном в массиве.
+// Алгоритм не должен зависеть от регистра, но регистр слова должен быть сохранен при его возврате.
 
-function task32(array) {
-    let arrayEven = [];
-    let arrayNotEven = [];
-    for (let a = 0; a < array.length; a++) {
-        if (array[a] % 2 === 0) {
-            arrayEven.push(array[a]);
-        } else {
-            arrayNotEven.push(array[a]);
+
+function filterBySubstring(input, dictionary) {
+    let result = [];
+    let string = String(dictionary).split(",");
+    for (let a = 0;a < string.length; a++) {
+        if (input === string[a].slice(0, input.length)) {
+            result.push(string[a]);
         }
     }
-    if (arrayEven.length === 1) {
-        return arrayEven[0];
-    } else {
-        return arrayNotEven[0];
-    }
+    return result;
 }
 
-console.log(task32([2, 3, 383]));
+filterBySubstring('ai', ['airplane', 'airport', 'apple', 'ball'])
