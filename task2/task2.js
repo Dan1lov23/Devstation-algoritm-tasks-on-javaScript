@@ -1,13 +1,24 @@
-// Напишите функцию с именем squareSum, которая принимает массив чисел numbers,
-// и возводит каждое число в квадрат и затем складывает все полученные значения вместе.
-// Функция должна вернуть сумму квадратов всех чисел из массива.
+// Анаграмма - это слово, которое содержит все буквы другого слова в том же количестве, но ином порядке.
+// Нужно написать функцию isAnagram(a, b), которая проверяет, являются ли две строки анаграммами.
+// Регистр букв не имеет значения.
+// Пробелы или знаки препинания в расчет не берутся.
 
-function task2(array) {
-    let resultArray = [];
-    for (let a = 0; a < array.length; a++) {
-        resultArray.push(array[a] ** 2);
+function isAnagram(a, b) {
+    let stringA = "";
+    for (let x = 0; x < a.length; x++) {
+        stringA += a[x].toLowerCase();
     }
-    return resultArray;
+    let stringB = "";
+    for (let y = 0; y < b.length; y++) {
+        stringB += b[y].toLowerCase();
+    }
+    console.log(stringA, stringB);
+    for (let s = 0; s < stringA.length; s++) {
+        if (stringB.includes(stringA[s]) === false) {
+            return false;
+        }
+    }
+    return true;
 }
 
-console.log(task2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+isAnagram('Гора', 'РоГа');
