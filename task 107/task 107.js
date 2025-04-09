@@ -34,3 +34,4 @@ function isIsomorphic(str1, str2) {
 }
 
 console.log(isIsomorphic('pink', 'loot'))
+//
